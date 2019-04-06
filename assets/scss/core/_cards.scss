@@ -518,6 +518,9 @@
       }
 
       position: relative;
+      i.fa.ct-series-a{
+        color: rgba(255,255,255,.8);
+      }
 
       .ct-chart{
         .card-title{
@@ -537,7 +540,7 @@
         .ct-series-a .ct-point,
         .ct-series-a .ct-line,
         .ct-series-a .ct-bar,
-        .ct-series-a .ct-slice-donut{
+        .ct-series-a .ct-slice-donut {
             stroke: rgba(255,255,255,.8);
         }
         .ct-series-a .ct-slice-pie,

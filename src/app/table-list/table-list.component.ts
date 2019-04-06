@@ -11,7 +11,7 @@ import { ApiService } from 'app/services/api.service';
 })
 export class TableListComponent implements OnInit {
 
-  protected lista: MedicaoDTO[];
+  lista: MedicaoDTO[];
 
   constructor(private dataService: DataService) { }
 

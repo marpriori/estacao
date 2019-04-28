@@ -15,8 +15,8 @@
                                     <th> Chuva (mm) </th>
                                     <th> Temperatura (º) </th>
                                     <th> Vento (km/h) </th>
-                                    <th> Humidade Solo (%) </th>
-                                    <th> Humidade Ar (%) </th>
+                                    <th> Umidade Solo (%) </th>
+                                    <th> Umidade Ar (%) </th>
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let registro of lista">
@@ -24,8 +24,8 @@
                                         <td>{{registro.getChuva()}}</td>
                                         <td>{{registro.getTemperatura()}}</td>
                                         <td>{{registro.getVento()}}</td>
-                                        <td>{{registro.getHumidadeAr()}}</td>
-                                        <td>{{registro.getHumidadeSolo()}}</td>
+                                        <td>{{registro.getUmidadeSolo()}}</td>
+                                        <td>{{registro.getUmidadeAr()}}</td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -12,4 +12,9 @@ export class DataService {
   public getAll(): Observable<MedicaoDTO[]> {
     return this.api.getAll();
   }
+
+  //API GET /?tempo=agora
+  public getAgora(): Observable<MedicaoDTO> {
+    return this.api.getAgora();
+  }
 }

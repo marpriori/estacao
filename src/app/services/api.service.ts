@@ -12,6 +12,8 @@ const API_URL = environment.apiUrl;
 @Injectable()
 export class ApiService {
 
+  private zero = new Uint8Array([0]);
+
   constructor(private http: Http) { }
 
   // API: GET /
@@ -26,12 +28,32 @@ export class ApiService {
           registro.chuva,
           registro.temperatura,
           registro.vento,
-          registro.humidade_solo,
-          registro.humidade_ar
+          registro.umidade_solo,
+          registro.umidade_ar
         ));
       })
       .catch(this.handleError);
   }
+
+  //API: GET /?tempo=agora
+  public getAgora(): Observable<MedicaoDTO> {
+    return this.http
+      .get(API_URL + '/?tempo=agora')
+      .map(response => {
+        const registro = response.json();
+        return new MedicaoDTO(
+          this.zero,
+          registro.registrado_em,
+          registro.chuva,
+          registro.temperatura,
+          registro.vento,
+          registro.umidade_solo,
+          registro.umidade_ar
+        );
+      })
+      .catch(this.handleError);
+  }
+
   private handleError(error: Response | any) {
     console.error('ApiService::handleError', error);
     return Observable.throw(error);

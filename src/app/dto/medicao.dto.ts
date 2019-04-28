@@ -6,9 +6,18 @@ export class MedicaoDTO {
         private chuva: number,
         private temperatura: number,
         private vento: number,
-        private humidade_solo: number,
-        private humidade_ar: number
+        private umidade_solo: number,
+        private umidade_ar: number
     ) {
+    }
+
+    public static instance()
+    {
+        return new MedicaoDTO(
+            new Uint8Array([0]),
+            null,
+            0,0,0,0,0
+        );
     }
 
     public getId() {
@@ -31,11 +40,11 @@ export class MedicaoDTO {
         return this.vento;
     }
 
-    public getHumidadeAr() {
-        return this.humidade_ar;
+    public getUmidadeAr() {
+        return this.umidade_ar;
     }
 
-    public getHumidadeSolo() {
-        return this.humidade_solo;
+    public getUmidadeSolo() {
+        return this.umidade_solo;
     }
 }

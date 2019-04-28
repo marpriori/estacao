@@ -1,14 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
+import { ApiService } from 'app/services/api.service';
+import { DataService } from 'app/services/data.service';
+import { MedicaoDTO } from 'app/dto/medicao.dto';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
+  providers: [DataService, ApiService]
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  dadosAgora: MedicaoDTO = MedicaoDTO.instance();
+
+  constructor(private dataService: DataService) { }
+
   startAnimationForLineChart(chart) {
     let seq: any, delays: any, durations: any;
     seq = 0;
@@ -42,6 +49,7 @@ export class DashboardComponent implements OnInit {
 
     seq = 0;
   };
+
   startAnimationForBarChart(chart) {
     let seq2: any, delays2: any, durations2: any;
 
@@ -65,9 +73,16 @@ export class DashboardComponent implements OnInit {
 
     seq2 = 0;
   };
-  ngOnInit() {
-    /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
+  ngOnInit() {
+    this.dataService.getAgora().subscribe(
+      (registro) => {
+        console.log(registro);
+        this.dadosAgora = registro;
+      }
+      );
+
+    /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
     const dataHumidityChart: any = {
       labels: ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
       series: [
@@ -180,5 +195,4 @@ export class DashboardComponent implements OnInit {
     //start animation for the Emails Subscription Chart
     this.startAnimationForBarChart(websiteViewsChart);
   }
-
 }

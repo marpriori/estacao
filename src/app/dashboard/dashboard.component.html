@@ -8,7 +8,7 @@
                             <i class="material-icons">filter_drama</i>
                         </div>
                         <p class="card-category">Chuva</p>
-                        <h3 class="card-title">50
+                        <h3 class="card-title"> {{ dadosAgora.getChuva() }}
                             <small>mm</small>
                         </h3>
                     </div>
@@ -26,13 +26,14 @@
                             <i class="material-icons">toys</i>
                         </div>
                         <p class="card-category">Velocidade do Vento</p>
-                        <h3 class="card-title">5
+                        <h3 class="card-title">{{ dadosAgora.getVento() }}
                             <small>km/h</small>
                         </h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">update</i> Atualizado à 10s
+                            <i class="material-icons">update</i> Último registro em 
+                            {{dadosAgora.getRegistradoEm() | date:"dd/MM/yyyy 'às' HH:mm"}}
                         </div>
                     </div>
                 </div>
@@ -46,13 +47,14 @@
                             <i class="fa fa-thermometer-half"></i>
                         </div>
                         <p class="card-category">Temperatura</p>
-                        <h3 class="card-title">22
+                        <h3 class="card-title">{{ dadosAgora.getTemperatura() }}
                             <small>º</small>
                         </h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">update</i> Atualizado à 10s
+                            <i class="material-icons">update</i> Último registro em 
+                            {{dadosAgora.getRegistradoEm() | date:"dd/MM/yyyy 'às' HH:mm"}}
                         </div>
                     </div>
                 </div>
@@ -63,14 +65,15 @@
                         <div class="card-icon">
                             <i class="fa fa-tint"></i>
                         </div>
-                        <p class="card-category">Humidade do Ar</p>
-                        <h3 class="card-title">75
+                        <p class="card-category">Umidade do Ar</p>
+                        <h3 class="card-title">{{ dadosAgora.getUmidadeAr() }}
                             <small>%</small>
                         </h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">local_offer</i> Atualizado à 10s
+                            <i class="material-icons">update</i> Último registro em 
+                            {{dadosAgora.getRegistradoEm() | date:"dd/MM/yyyy 'às' HH:mm"}}
                         </div>
                     </div>
                 </div>
@@ -81,14 +84,15 @@
                         <div class="card-icon">
                             <i class="material-icons">terrain</i>
                         </div>
-                        <p class="card-category">Humidade do Solo</p>
-                        <h3 class="card-title">95
+                        <p class="card-category">Umidade do Solo</p>
+                        <h3 class="card-title">{{ dadosAgora.getUmidadeSolo() }}
                             <small>%</small>
                         </h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">update</i> Atualizado à 10s
+                            <i class="material-icons">update</i> Último registro em 
+                            {{dadosAgora.getRegistradoEm() | date:"dd/MM/yyyy 'às' HH:mm"}}
                         </div>
                     </div>
                 </div>
@@ -103,7 +107,7 @@
                         <div class="ct-chart" id="humidityChart"></div>
                     </div>
                     <div class="card-body">
-                        <h4 class="card-title">Humidade Semana (%)</h4>
+                        <h4 class="card-title">Umidade Semana (%)</h4>
                         <p class="card-category"><i class="fa fa-square ct-series-a"></i> Ar</p>
                         <p class="card-category"><i class="fa fa-square ct-series-b"></i> Solo</p>
                     </div>

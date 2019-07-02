@@ -1,7 +1,7 @@
 export class MedicaoDTO {
 
     constructor(
-        private id: BigInteger,
+        private id: string,
         private registrado_em: Date,
         private chuva: number,
         private temperatura: number,
@@ -14,7 +14,7 @@ export class MedicaoDTO {
     public static instance()
     {
         return new MedicaoDTO(
-            new Uint8Array([0]),
+            "",
             null,
             0,0,0,0,0
         );

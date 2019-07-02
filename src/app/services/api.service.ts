@@ -24,12 +24,12 @@ export class ApiService {
         const data = response.json();
         return data.map((registro) => new MedicaoDTO(
           registro.id,
-          registro.registrado_em,
+          registro.registradoEm,
           registro.chuva,
           registro.temperatura,
           registro.vento,
-          registro.umidade_solo,
-          registro.umidade_ar
+          registro.umidadeSolo,
+          registro.umidadeAr
         ));
       })
       .catch(this.handleError);
@@ -42,7 +42,7 @@ export class ApiService {
       .map(response => {
         const registro = response.json();
         return new MedicaoDTO(
-          this.zero,
+          '',
           registro.registrado_em,
           registro.chuva,
           registro.temperatura,

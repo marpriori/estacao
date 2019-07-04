@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../dashboard/dashboard.component';
+import { LoadingComponent } from '../../dashboard/loading/loading.component';
 import { UserProfileComponent } from '../../user-profile/user-profile.component';
 import { TableListComponent } from '../../table-list/table-list.component';
 import { TypographyComponent } from '../../typography/typography.component';
@@ -20,6 +21,7 @@ import {
   MatTooltipModule,
   MatSelectModule
 } from '@angular/material';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -30,7 +32,7 @@ import {
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatTooltipModule,
+    MatTooltipModule
   ],
   declarations: [
     DashboardComponent,
@@ -41,6 +43,7 @@ import {
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
+    LoadingComponent
   ]
 })
 

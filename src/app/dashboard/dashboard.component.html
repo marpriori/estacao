@@ -1,4 +1,5 @@
 <div class="main-content">
+    <app-loading *ngIf="loading"></app-loading>
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6">
@@ -8,7 +9,7 @@
                             <i class="material-icons">filter_drama</i>
                         </div>
                         <p class="card-category">Chuva</p>
-                        <h3 class="card-title"> {{ dadosAgora.getChuva() }}
+                        <h3 class="card-title"> {{ dadosAgora.hoje.getChuva() }}
                             <small>mm</small>
                         </h3>
                     </div>
@@ -26,14 +27,14 @@
                             <i class="material-icons">toys</i>
                         </div>
                         <p class="card-category">Velocidade do Vento</p>
-                        <h3 class="card-title">{{ dadosAgora.getVento() }}
+                        <h3 class="card-title">{{ dadosAgora.hoje.getVento() }}
                             <small>km/h</small>
                         </h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">update</i> Último registro em 
-                            {{dadosAgora.getRegistradoEm() | date:"dd/MM/yyyy 'às' HH:mm"}}
+                            <i class="material-icons">update</i> Último registro em
+                            {{dadosAgora.hoje.getRegistradoEm() | date:"dd/MM/yyyy 'às' HH:mm"}}
                         </div>
                     </div>
                 </div>
@@ -47,14 +48,14 @@
                             <i class="fa fa-thermometer-half"></i>
                         </div>
                         <p class="card-category">Temperatura</p>
-                        <h3 class="card-title">{{ dadosAgora.getTemperatura() }}
+                        <h3 class="card-title">{{ dadosAgora.hoje.getTemperatura() }}
                             <small>º</small>
                         </h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">update</i> Último registro em 
-                            {{dadosAgora.getRegistradoEm() | date:"dd/MM/yyyy 'às' HH:mm"}}
+                            <i class="material-icons">update</i> Último registro em
+                            {{dadosAgora.hoje.getRegistradoEm() | date:"dd/MM/yyyy 'às' HH:mm"}}
                         </div>
                     </div>
                 </div>
@@ -66,14 +67,14 @@
                             <i class="fa fa-tint"></i>
                         </div>
                         <p class="card-category">Umidade do Ar</p>
-                        <h3 class="card-title">{{ dadosAgora.getUmidadeAr() }}
+                        <h3 class="card-title">{{ dadosAgora.hoje.getUmidadeAr() }}
                             <small>%</small>
                         </h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">update</i> Último registro em 
-                            {{dadosAgora.getRegistradoEm() | date:"dd/MM/yyyy 'às' HH:mm"}}
+                            <i class="material-icons">update</i> Último registro em
+                            {{dadosAgora.hoje.getRegistradoEm() | date:"dd/MM/yyyy 'às' HH:mm"}}
                         </div>
                     </div>
                 </div>
@@ -85,14 +86,14 @@
                             <i class="material-icons">terrain</i>
                         </div>
                         <p class="card-category">Umidade do Solo</p>
-                        <h3 class="card-title">{{ dadosAgora.getUmidadeSolo() }}
+                        <h3 class="card-title">{{ dadosAgora.hoje.getUmidadeSolo() }}
                             <small>%</small>
                         </h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">update</i> Último registro em 
-                            {{dadosAgora.getRegistradoEm() | date:"dd/MM/yyyy 'às' HH:mm"}}
+                            <i class="material-icons">update</i> Último registro em
+                            {{dadosAgora.hoje.getRegistradoEm() | date:"dd/MM/yyyy 'às' HH:mm"}}
                         </div>
                     </div>
                 </div>
@@ -121,7 +122,7 @@
             <div class="col-md-6">
                 <div class="card card-chart">
                     <div class="card-header card-header-success">
-                        <div class="ct-chart" id="websiteViewsChart"></div>
+                        <div class="ct-chart" id="rainChart"></div>
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">Chuva (mm)</h4>

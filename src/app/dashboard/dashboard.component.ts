@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import * as Chartist from 'chartist';
 import { ApiService } from 'app/services/api.service';
 import { DataService } from 'app/services/data.service';
-import { MedicaoDTO } from 'app/dto/medicao.dto';
+import { DashboardDTO } from 'app/dto/dashboard.dto';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,7 +12,8 @@ import { MedicaoDTO } from 'app/dto/medicao.dto';
 })
 export class DashboardComponent implements OnInit {
 
-  dadosAgora: MedicaoDTO = MedicaoDTO.instance();
+  dadosAgora: DashboardDTO = DashboardDTO.instance();
+  loading: Boolean = true;
 
   constructor(private dataService: DataService) { }
 
@@ -79,15 +80,41 @@ export class DashboardComponent implements OnInit {
       (registro) => {
         console.log(registro);
         this.dadosAgora = registro;
+
+        dataHumidityChart.series = [
+          this.dadosAgora.getSemana().getUmidade().map(x => x.getAr()),
+          this.dadosAgora.getSemana().getUmidade().map(x => x.getSolo()),
+        ];
+        humidityChart.update(dataHumidityChart);
+
+        dataWindChart.series = [
+          this.dadosAgora.getAno().getVento().map(x => x.getMax()),
+          this.dadosAgora.getAno().getVento().map(x => x.getAvg()),
+          this.dadosAgora.getAno().getVento().map(x => x.getMin()),
+        ];
+        windChart.update(dataWindChart);
+
+        dataThermometerChart.series = [
+          this.dadosAgora.getSemana().getTemperatura().map(x => x.getMax()),
+          this.dadosAgora.getSemana().getTemperatura().map(x => x.getMin()),
+        ];
+        thermometerChart.update(dataThermometerChart);
+
+        dataRainChart.series = [
+          this.dadosAgora.getAno().getChuva().map(x => x.getTotal()),
+        ];
+        rainChart.update(dataRainChart);
+
+        this.loading = false;
       }
-      );
+    );
 
     /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
-    const dataHumidityChart: any = {
-      labels: ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+    var dataHumidityChart: any = {
+      labels: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
       series: [
-        [70, 80, 60, 65, 80, 90, 95],
-        [65, 83, 50, 58, 83, 85, 90]
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0]
       ]
     };
 
@@ -110,8 +137,8 @@ export class DashboardComponent implements OnInit {
     const dataThermometerChart: any = {
       labels: ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
       series: [
-        [9, 15, 8, 12, 5, 12, 17],
-        [20, 21, 25, 16, 12, 29, 33]
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0]
       ]
     };
 
@@ -133,10 +160,9 @@ export class DashboardComponent implements OnInit {
     var dataWindChart = {
       labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
       series: [
-        [30, 14, 13, 17, 25, 18, 15, 17, 19, 21, 35, 27],
-        [20, 7, 8, 12, 22, 15, 12, 17, 5, 7, 12, 19],
-        [10, 3, 2, 7, 10, 5, 3, 17, 0, 2, 3, 7],
-
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       ]
     };
     var optionsWindChart = {
@@ -163,21 +189,19 @@ export class DashboardComponent implements OnInit {
     //start animation for the Wind Chart
     this.startAnimationForBarChart(windChart);
 
-    /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
+    /* ----------==========     Rain Subscription Chart initialization    ==========---------- */
 
-    var datawebsiteViewsChart = {
+    var dataRainChart = {
       labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
       series: [
-        [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
-
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       ]
     };
-    var optionswebsiteViewsChart = {
+    var optionsRainChart = {
       axisX: {
         showGrid: false
       },
       low: 0,
-      high: 1000,
       chartPadding: { top: 0, right: 5, bottom: 0, left: 0 }
     };
     var responsiveOptions: any[] = [
@@ -190,9 +214,9 @@ export class DashboardComponent implements OnInit {
         }
       }]
     ];
-    var websiteViewsChart = new Chartist.Bar('#websiteViewsChart', datawebsiteViewsChart, optionswebsiteViewsChart, responsiveOptions);
+    var rainChart = new Chartist.Bar('#rainChart', dataRainChart, optionsRainChart, responsiveOptions);
 
     //start animation for the Emails Subscription Chart
-    this.startAnimationForBarChart(websiteViewsChart);
+    this.startAnimationForBarChart(rainChart);
   }
 }

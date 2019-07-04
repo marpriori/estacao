@@ -9,7 +9,7 @@
                             <i class="material-icons">filter_drama</i>
                         </div>
                         <p class="card-category">Chuva</p>
-                        <h3 class="card-title"> {{ dadosAgora.hoje.getChuva() }}
+                        <h3 class="card-title"> {{ dadosAgora.getHoje().getChuva() }}
                             <small>mm</small>
                         </h3>
                     </div>
@@ -27,14 +27,14 @@
                             <i class="material-icons">toys</i>
                         </div>
                         <p class="card-category">Velocidade do Vento</p>
-                        <h3 class="card-title">{{ dadosAgora.hoje.getVento() }}
+                        <h3 class="card-title">{{ dadosAgora.getHoje().getVento() }}
                             <small>km/h</small>
                         </h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
                             <i class="material-icons">update</i> Último registro em
-                            {{dadosAgora.hoje.getRegistradoEm() | date:"dd/MM/yyyy 'às' HH:mm"}}
+                            {{dadosAgora.getHoje().getRegistradoEm() | date:"dd/MM/yyyy 'às' HH:mm"}}
                         </div>
                     </div>
                 </div>
@@ -48,14 +48,14 @@
                             <i class="fa fa-thermometer-half"></i>
                         </div>
                         <p class="card-category">Temperatura</p>
-                        <h3 class="card-title">{{ dadosAgora.hoje.getTemperatura() }}
+                        <h3 class="card-title">{{ dadosAgora.getHoje().getTemperatura() }}
                             <small>º</small>
                         </h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
                             <i class="material-icons">update</i> Último registro em
-                            {{dadosAgora.hoje.getRegistradoEm() | date:"dd/MM/yyyy 'às' HH:mm"}}
+                            {{dadosAgora.getHoje().getRegistradoEm() | date:"dd/MM/yyyy 'às' HH:mm"}}
                         </div>
                     </div>
                 </div>
@@ -67,14 +67,14 @@
                             <i class="fa fa-tint"></i>
                         </div>
                         <p class="card-category">Umidade do Ar</p>
-                        <h3 class="card-title">{{ dadosAgora.hoje.getUmidadeAr() }}
+                        <h3 class="card-title">{{ dadosAgora.getHoje().getUmidadeAr() }}
                             <small>%</small>
                         </h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
                             <i class="material-icons">update</i> Último registro em
-                            {{dadosAgora.hoje.getRegistradoEm() | date:"dd/MM/yyyy 'às' HH:mm"}}
+                            {{dadosAgora.getHoje().getRegistradoEm() | date:"dd/MM/yyyy 'às' HH:mm"}}
                         </div>
                     </div>
                 </div>
@@ -86,14 +86,14 @@
                             <i class="material-icons">terrain</i>
                         </div>
                         <p class="card-category">Umidade do Solo</p>
-                        <h3 class="card-title">{{ dadosAgora.hoje.getUmidadeSolo() }}
+                        <h3 class="card-title">{{ dadosAgora.getHoje().getUmidadeSolo() }}
                             <small>%</small>
                         </h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
                             <i class="material-icons">update</i> Último registro em
-                            {{dadosAgora.hoje.getRegistradoEm() | date:"dd/MM/yyyy 'às' HH:mm"}}
+                            {{dadosAgora.getHoje().getRegistradoEm() | date:"dd/MM/yyyy 'às' HH:mm"}}
                         </div>
                     </div>
                 </div>

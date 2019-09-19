@@ -82,8 +82,8 @@ export class DashboardComponent implements OnInit {
         this.dadosAgora = registro;
 
         dataHumidityChart.series = [
-          this.dadosAgora.getSemana().getUmidade().map(x => x.getAr()),
-          this.dadosAgora.getSemana().getUmidade().map(x => x.getSolo()),
+          this.dadosAgora.getSemana().getUmidade().map(x => x.getMax()),
+          this.dadosAgora.getSemana().getUmidade().map(x => x.getMin()),
         ];
         humidityChart.update(dataHumidityChart);
 
@@ -111,7 +111,7 @@ export class DashboardComponent implements OnInit {
 
     /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
     var dataHumidityChart: any = {
-      labels: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+      labels: [],
       series: [
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0]
@@ -135,7 +135,7 @@ export class DashboardComponent implements OnInit {
     /* ----------==========     Temperatura Chart initialization    ==========---------- */
 
     const dataThermometerChart: any = {
-      labels: ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+      labels: [],
       series: [
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0]
@@ -158,7 +158,7 @@ export class DashboardComponent implements OnInit {
     /* ----------==========     Wind Chart initialization    ==========---------- */
 
     var dataWindChart = {
-      labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+      labels: [],
       series: [
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -192,7 +192,7 @@ export class DashboardComponent implements OnInit {
     /* ----------==========     Rain Subscription Chart initialization    ==========---------- */
 
     var dataRainChart = {
-      labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+      labels: [],
       series: [
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       ]

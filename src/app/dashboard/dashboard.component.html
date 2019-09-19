@@ -41,7 +41,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-header card-header-warning card-header-icon">
                         <div class="card-icon">
@@ -60,7 +60,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-header card-header-info card-header-icon">
                         <div class="card-icon">
@@ -79,7 +79,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4">
+            <!-- <div class="col-lg-4 col-md-4 col-sm-4">
                 <div class="card card-stats">
                     <div class="card-header card-header-success card-header-icon">
                         <div class="card-icon">
@@ -97,74 +97,176 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
 
         </div>
         <div class="row">
-            <div class="col-md-6">
-                <div class="card card-chart">
-                    <div class="card-header card-header-info">
-                        <div class="ct-chart" id="humidityChart"></div>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">Umidade Semana (%)</h4>
-                        <p class="card-category"><i class="fa fa-square ct-series-a"></i> Ar</p>
-                        <p class="card-category"><i class="fa fa-square ct-series-b"></i> Solo</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">access_time</i> atualizado à 2 dias
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="card card-chart">
                     <div class="card-header card-header-success">
                         <div class="ct-chart" id="rainChart"></div>
                     </div>
                     <div class="card-body">
-                        <h4 class="card-title">Chuva (mm)</h4>
-                        <p class="card-category">Últimos 12 meses</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">access_time</i> atualizado à 2 dias
+                        <h4 class="card-title">Chuva (mm) últimos 12 meses</h4>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th> Mês</th>
+                                    <th> Chuva (mm)</th>
+                                    <th> Mês</th>
+                                    <th> Chuva (mm)</th>
+
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let registro of [0,1,2,3,4,5]">
+                                        <td style="font-weight: bold">
+                                            {{dadosAgora.getAno().getChuva()[registro].getMonth() | date:'LLLL/yy' }}
+                                        </td>
+                                        <td>
+                                            {{dadosAgora.getAno().getChuva()[registro].getTotal() }}
+                                        </td>
+                                        <td style="font-weight: bold">
+                                            {{dadosAgora.getAno().getChuva()[registro+6].getMonth() | date:'LLLL/yy' }}
+                                        </td>
+                                        <td>
+                                            {{dadosAgora.getAno().getChuva()[registro+6].getTotal() }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
-                <div class="card card-chart">
-                    <div class="card-header card-header-warning">
-                        <div class="ct-chart" id="thermometerChart"></div>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">Temperatura (º)</h4>
-                        <p class="card-category">Máximo e mínimo na última semana</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">access_time</i> atualizado à 2 dias
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="card card-chart">
                     <div class="card-header card-header-primary">
                         <div class="ct-chart" id="windChart"></div>
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">Velocidade do Vento (km/h)</h4>
-                        <p class="card-category">Máxima, mínima e média do dia, dos últimos 30 dias</p>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th> Mês</th>
+                                    <th> Máx</th>
+                                    <th> Méd</th>
+                                    <th> Min</th>
+                                    <th> Mês</th>
+                                    <th> Máx</th>
+                                    <th> Méd</th>
+                                    <th> Min</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let registro of [0,1,2,3,4,5]">
+                                        <td style="font-weight: bold">
+                                            {{dadosAgora.getAno().getVento()[registro].getMonth() | date:'LLLL/yy' }}
+                                        </td>
+                                        <td>
+                                            {{dadosAgora.getAno().getVento()[registro].getMax() }}
+                                        </td>
+                                        <td>
+                                            {{dadosAgora.getAno().getVento()[registro].getAvg() }}
+                                        </td>
+                                        <td>
+                                            {{dadosAgora.getAno().getVento()[registro].getMin() }}
+                                        </td>
+                                        <td style="font-weight: bold">
+                                            {{dadosAgora.getAno().getVento()[registro+6].getMonth() | date:'LLLL/yy' }}
+                                        </td>
+                                        <td>
+                                            {{dadosAgora.getAno().getVento()[registro+6].getMax() }}
+                                        </td>
+                                        <td>
+                                            {{dadosAgora.getAno().getVento()[registro+6].getAvg() }}
+                                        </td>
+                                        <td>
+                                            {{dadosAgora.getAno().getVento()[registro+6].getMin() }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-chart">
+                    <div class="card-header card-header-warning">
+                        <div class="ct-chart" id="thermometerChart"></div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Temperatura (º)</h4>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th> Dia </th>
+                                    <th *ngFor="let registro of dadosAgora.getSemana().getTemperatura()">
+                                        {{registro.getDay() | date:'EEEE' }}
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="font-weight: bold">Máximo</td>
+                                        <td *ngFor="let registro of dadosAgora.getSemana().getTemperatura()">
+                                            {{registro.getMax()}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: bold">Mínimo</td>
+                                        <td *ngFor="let registro of dadosAgora.getSemana().getTemperatura()">
+                                            {{registro.getMin()}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">access_time</i> atualizado à 2 dias
+                            <i class="material-icons">access_time</i> atualizado
+                            {{dadosAgora.getHoje().getRegistradoEm() | date:"dd/MM/yyyy 'às' HH:mm"}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-chart">
+                    <div class="card-header card-header-info">
+                        <div class="ct-chart" id="humidityChart"></div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Umidade Ar Semana (%)</h4>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th> Dia </th>
+                                    <th *ngFor="let registro of dadosAgora.getSemana().getUmidade()">
+                                        {{registro.getDay() | date:'EEEE' }}
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="font-weight: bold">Máximo</td>
+                                        <td *ngFor="let registro of dadosAgora.getSemana().getUmidade()">
+                                            {{registro.getMax()}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: bold">Mínimo</td>
+                                        <td *ngFor="let registro of dadosAgora.getSemana().getUmidade()">
+                                            {{registro.getMin()}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

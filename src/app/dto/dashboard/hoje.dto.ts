@@ -31,10 +31,10 @@ export class HojeDTO {
     }
 
     public getUmidadeAr() {
-        return this.umidadeSolo;
+        return this.umidadeAr;
     }
 
     public getUmidadeSolo() {
-        return this.umidadeAr;
+        return this.umidadeSolo;
     }
 }

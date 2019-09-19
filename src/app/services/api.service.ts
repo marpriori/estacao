@@ -9,11 +9,11 @@ import 'rxjs/add/observable/throw';
 import { DashboardDTO } from 'app/dto/dashboard.dto';
 import { HojeDTO } from 'app/dto/dashboard/hoje.dto';
 import { SemanaDTO } from 'app/dto/dashboard/semana.dto';
-import { UmidadeDTO } from 'app/dto/dashboard/umidade.dto';
 import { TemperaturaDTO } from 'app/dto/dashboard/temperatura.dto';
 import { AnoDTO } from 'app/dto/dashboard/ano.dto';
 import { ChuvaDTO } from 'app/dto/dashboard/chuva.dto';
 import { VentoDTO } from 'app/dto/dashboard/vento.dto';
+import { UmidadeArDTO } from 'app/dto/dashboard/umidadeAr.dto';
 
 const API_URL = environment.apiUrl;
 
@@ -58,13 +58,13 @@ export class ApiService {
           ),
           new SemanaDTO(
             registro.semana.umidade.map(item => {
-              return new UmidadeDTO(
+              return new UmidadeArDTO(
                 item.day,
-                item.solo,
-                item.ar
+                item.max,
+                item.min
               )
             }),
-            registro.semana.umidade.map(item => {
+            registro.semana.temperatura.map(item => {
               return new TemperaturaDTO(
                 item.day,
                 item.max,
@@ -75,13 +75,13 @@ export class ApiService {
           new AnoDTO(
             registro.ano.chuva.map(item => {
               return new ChuvaDTO(
-                item.month,
+                new Date(item.month+'-02'),
                 item.total
               )
             }),
             registro.ano.vento.map(item => {
               return new VentoDTO(
-                item.month,
+                new Date(item.month+'-02'),
                 item.max,
                 item.min,
                 item.avg

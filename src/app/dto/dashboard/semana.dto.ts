@@ -1,10 +1,10 @@
-import { UmidadeDTO } from "./umidade.dto";
+import { UmidadeArDTO } from "./umidadeAr.dto";
 import { TemperaturaDTO } from "./temperatura.dto";
 
 export class SemanaDTO {
 
     constructor(
-        private umidade: UmidadeDTO[],
+        private umidade: UmidadeArDTO[],
         private temperatura: TemperaturaDTO[]
 
     ) {
@@ -12,7 +12,7 @@ export class SemanaDTO {
 
     public static instance() {
         return new SemanaDTO(
-            new Array<UmidadeDTO>(),
+            new Array<UmidadeArDTO>(),
             new Array<TemperaturaDTO>()
         );
     }
